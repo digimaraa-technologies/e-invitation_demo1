@@ -73,7 +73,7 @@ Pages, S3, or ordinary shared hosting. There is no build step and no server-side
     │   └── main.js             # Behaviour (modules 00–15)
     ├── images/
     │   ├── *.jpg               # Hero, rituals, venue, dress-code images
-    │   └── wedding-gallery/    # Gallery photographs (gallery-01 … gallery-16)
+    │   └── wedding-gallery/    # Spare photo pool (gallery-01 … gallery-16)
     ├── audio/
     │   ├── wedding-instrumental.mp3
     │   └── wedding-instrumental.ogg
@@ -89,7 +89,7 @@ assets/js/config.js   ──►  window.weddingConfig
                               │
                               ├──►  main.js  ──►  [data-bind="path.to.value"]  text nodes
                               │            ──►  JSON-LD <script>  (startDate, location)
-                              │            ──►  countdown, calendar links, gallery, timeline
+                              │            ──►  countdown, calendar links, ritual gallery, timeline
                               │
                               └──►  never written back — config.js is read-only at runtime
 ```
@@ -109,7 +109,7 @@ Anything with a `data-bind="a.b.c"` attribute in `index.html` is filled from
 | 4 | Invitation details | `#details` | Date / time / venue info cards. |
 | 5 | Countdown | `#countdown` | Live countdown + "Add to Calendar" (`.ics`) + Google Calendar link. |
 | 6 | Rituals timeline | `#rituals` | Ordered programme with times, icons and photos. |
-| 7 | Gallery + lightbox | `#gallery` | 15 photographs, keyboard-navigable lightbox. |
+| 7 | Ritual gallery + lightbox | `#ritualGallery` | 12 ritual cards (Tamil name + description) rendered from `ritualGallery[]`; clicking a card opens the keyboard-navigable lightbox. |
 | 8 | Venue & directions | `#venue` | Photo, address, Google Maps + directions links. |
 | 9 | Dress code | `#dresscode` | Two cards (women / men) with photographs. |
 | 10 | Music | *(top bar)* | Visible toggle in the sticky header. |
@@ -233,16 +233,20 @@ One object per entry in the programme timeline:
 
 Remove the entries that are not part of your programme — the timeline re-renders from the array.
 
-### `gallery[]`
+### `ritualGallery[]`
 
 ```js
-{ src: "assets/images/wedding-gallery/gallery-01.jpg",
-  alt: "…",            // required — describes the photograph for screen readers
-  caption: "…" }      // optional lightbox caption
+{ name: "Kalash Puja",                    // English name (required)
+  nameTa: "கலச பூஜை",               // Tamil name (optional)
+  image: "assets/images/kuthu-vilakku.jpg", // local file
+  alt: "Brass oil lamp lit for the kalash puja", // describes the photograph
+  description: "…" }                     // the card text
 ```
 
-Swap in your own photographs by dropping files into `assets/images/wedding-gallery/` and editing
-this array. Keep the `alt` text meaningful — it is not decorative.
+Each entry becomes a card in §7. Clicking a card opens the lightbox with that photograph and a
+caption of `name · nameTa`. Swap in your own photographs by dropping files into
+`assets/images/` and editing this array. Keep the `alt` text meaningful — it is not decorative.
+An empty array hides the whole section.
 
 ### `venue`, `dressCode`
 
@@ -414,8 +418,8 @@ canonical URL together** when you deploy.
 * All form fields have real `<label for="…">` elements; errors are flagged with
   `aria-invalid` and a `.has-error` class, and focus moves to the first invalid field.
 * The scratch card has a keyboard-operable **"Reveal Invitation"** alternative.
-* The gallery lightbox is a `role="dialog" aria-modal="true"` with focus trapping, `Escape`
-  to close and focus restored to the thumbnail on close.
+* The ritual gallery lightbox is a `role="dialog" aria-modal="true"` with focus trapping, `Escape`
+  to close and focus restored to the card on close.
 * The curtain's open button receives focus on load, so a keyboard guest can press `Enter`
   immediately.
 * A skip link (`Skip to invitation content`) is the next focusable element once the curtain is
@@ -478,6 +482,17 @@ Each original can be found on Wikimedia Commons under the file name shown in the
 the author credit and the licence link; `CC BY-SA` also requires that derivative releases use the
 same licence. Replacing the photographs with your own removes the requirement for those images
 (but keep the credits if you keep any of them).
+
+The files in `assets/images/wedding-gallery/` are a **spare photo pool** — the ritual gallery in §7
+currently uses `gallery-02`, `gallery-12`, `gallery-13` and `gallery-16`; point the other entries
+at any of the remaining files, or replace them with your own.
+
+### Photographs supplied with the project
+
+| Local file | Used for | Licence |
+|---|---|---|
+| `saree.jpg` | Dress code — women (§9) | Supplied by the couple — confirm the licence before publishing |
+| `Dhoti.jpg` | Dress code — men (§9) | Supplied by the couple — confirm the licence before publishing |
 
 ### Audio
 

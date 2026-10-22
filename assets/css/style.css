@@ -886,7 +886,10 @@ p:last-child {
 
 /* --- Centre composition -------------------------------------------------- */
 .curtain__center {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 6;
   width: min(92vw, 720px);
   text-align: center;
@@ -898,7 +901,7 @@ p:last-child {
 
 .curtain.is-opening .curtain__center {
   opacity: 0;
-  transform: translateY(-14px) scale(0.97);
+  transform: translate(-50%, -50%) translateY(-14px) scale(0.97);
 }
 
 .curtain__arch {
@@ -1934,82 +1937,8 @@ body.is-open .hero__reveal:nth-child(7) {
 }
 
 /* ==========================================================================
-   14. GALLERY & LIGHTBOX
+   14. LIGHTBOX
    ========================================================================== */
-.gallery {
-  text-align: center;
-}
-
-.gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: clamp(0.6rem, 2vw, 0.95rem);
-}
-
-.gallery__item {
-  position: relative;
-  display: block;
-  padding: 0;
-  border: 1px solid var(--line-gold);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--color-plum-deep);
-  aspect-ratio: 4 / 5;
-  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
-}
-
-.gallery__item:nth-child(6n + 1),
-.gallery__item:nth-child(6n + 6) {
-  aspect-ratio: 3 / 4;
-}
-
-.gallery__item:hover,
-.gallery__item:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 44px -22px rgba(0, 0, 0, 0.75);
-}
-
-.gallery__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1100ms var(--ease-out), filter var(--dur-base) var(--ease-out);
-}
-
-.gallery__item:hover img {
-  transform: scale(1.07);
-}
-
-.gallery__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 1rem;
-  background: linear-gradient(0deg, rgba(29, 20, 22, 0.9) 0%, rgba(29, 20, 22, 0.25) 45%, rgba(29, 20, 22, 0) 70%);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease-out);
-  text-align: left;
-}
-
-.gallery__item:hover .gallery__overlay,
-.gallery__item:focus-visible .gallery__overlay {
-  opacity: 1;
-}
-
-.gallery__caption {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.98rem;
-  color: var(--color-cream);
-  transform: translateY(8px);
-  transition: transform var(--dur-base) var(--ease-out);
-}
-
-.gallery__item:hover .gallery__caption {
-  transform: none;
-}
-
 .lightbox {
   position: fixed;
   inset: 0;
@@ -2278,6 +2207,101 @@ body.is-open .hero__reveal:nth-child(7) {
   text-align: right;
   font-weight: 400;
   color: var(--color-chocolate-plum);
+}
+
+/* ==========================================================================
+   14b. RITUAL GALLERY
+   ========================================================================== */
+.ritual-gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 3vw, 1.6rem);
+}
+
+.ritual-card {
+  position: relative;
+}
+
+.ritual-card__btn {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+
+.ritual-card__btn:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+}
+
+.ritual-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.ritual-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-out);
+}
+
+.ritual-card__btn:hover .ritual-card__image {
+  transform: scale(1.06);
+}
+
+.ritual-card__zoom {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 12, 14, 0.7);
+  color: var(--color-cream);
+}
+
+.ritual-card__zoom svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ritual-card__body {
+  display: grid;
+  gap: 0.4rem;
+  padding: clamp(1rem, 3vw, 1.4rem);
+}
+
+.ritual-card__step {
+  font-family: var(--font-accent);
+  letter-spacing: 0.3em;
+  font-size: 0.68rem;
+  color: var(--color-gold-soft);
+}
+
+.ritual-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+}
+
+.ritual-card__name-ta {
+  color: var(--color-gold-soft);
+}
+
+.ritual-card__desc {
+  color: rgba(251, 244, 236, 0.8);
+  margin: 0.2rem 0 0;
 }
 
 /* ==========================================================================

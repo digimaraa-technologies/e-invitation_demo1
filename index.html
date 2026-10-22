@@ -174,6 +174,7 @@
     <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="7.6" r="1" fill="currentColor" stroke="none"/></g></symbol>
     <symbol id="i-scratch" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19l6-6"/><path d="M9.5 6.5l8 8-3 3-8-8z"/><path d="M13 3l2 2M18 8l2 2"/></g></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></g></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5"/></g></symbol>
   </defs>
 </svg>
 
@@ -455,17 +456,18 @@
     </div>
   </section>
 
-  <!-- ======================= SECTION 7 — GALLERY ======================= -->
-  <section class="section section--walnut gallery" id="gallery">
+  <!-- ======================= SECTION 7 — RITUAL GALLERY ======================= -->
+  <section class="section section--walnut" id="ritualGallery">
     <div class="shell">
       <div class="section__head reveal">
-        <p class="eyebrow eyebrow--center eyebrow--light">Memories</p>
-        <h2 class="section-title">Wedding Gallery</h2>
-        <p class="lede">Floral decorations, temple settings and the sacred moments that make a South Indian wedding.</p>
+        <p class="eyebrow eyebrow--center eyebrow--light">Sacred steps</p>
+        <h2 class="section-title">Rituals of the Wedding</h2>
+        <p class="lede">Every step of our ceremony carries its own meaning, blessing and promise. These are the rituals we will follow together.</p>
         <div class="divider"><span class="divider__mark"></span></div>
       </div>
 
-      <div class="gallery__grid" id="galleryGrid"></div>
+      <!-- Cards are rendered from CONFIG.ritualGallery (assets/js/config.js). -->
+      <ul class="ritual-gallery" id="ritualGrid"></ul>
     </div>
   </section>
 

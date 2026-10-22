@@ -13,7 +13,7 @@
    06. Scratch-to-reveal card
    07. Countdown
    08. Ritual timeline
-   09. Gallery + lightbox
+   09. Ritual gallery + lightbox
    10. Venue & directions
    11. Dress code / travel / accommodation / gifts
    12. RSVP
@@ -94,7 +94,7 @@
       entrance: { enabled: true, prompt: "Tap to Open the Invitation" },
       music: { enabled: false },
       rituals: [],
-      gallery: [],
+      ritualGallery: [],
       rsvp: { enabled: true, submissionEndpoint: "" }
     };
   })();
@@ -1073,16 +1073,6 @@
   /* ========================================================================
      08. RITUAL TIMELINE
      ======================================================================== */
-  const RITUAL_ICONS = {
-    lamp: "#i-lamp",
-    instrument: "#i-instrument",
-    swing: "#i-swing",
-    garland: "#i-garland",
-    thaali: "#i-thaali",
-    fire: "#i-fire",
-    feast: "#i-feast"
-  };
-
   function renderTimeline() {
     const wrap = $("#timeline");
     if (!wrap) return;
@@ -1095,7 +1085,6 @@
 
     wrap.innerHTML = rituals
       .map(function (r, i) {
-        const icon = RITUAL_ICONS[r.icon] || "#i-lamp";
         const image = r.image
           ? '<figure class="timeline__figure"><img src="' + esc(r.image) + '" alt="' + esc(r.alt || r.name) +
             '" loading="lazy" decoding="async" width="800" height="600"></figure>'
@@ -1105,7 +1094,7 @@
           : "";
         return (
           '<article class="timeline__item reveal reveal--delay-' + (i % 4) + '">' +
-          '<span class="timeline__marker" aria-hidden="true"><svg width="20" height="20"><use href="' + icon + '"></use></svg></span>' +
+          '<span class="timeline__marker" aria-hidden="true"></span>' +
           '<div class="timeline__body">' +
           '<div class="timeline__text">' + time +
           '<h3 class="timeline__name">' + esc(r.name) + "</h3>" +
@@ -1118,41 +1107,61 @@
   }
 
   /* ========================================================================
-     09. GALLERY + LIGHTBOX
+     09. RITUAL GALLERY + LIGHTBOX
      ======================================================================== */
-  const gallery = {
+  const ritualGallery = {
     items: [],
     index: 0,
     lastFocus: null,
 
     init: function () {
-      const grid = $("#galleryGrid");
+      const grid = $("#ritualGrid");
       if (!grid) return;
 
-      this.items = read(CONFIG, "gallery", []) || [];
-      if (!this.items.length) {
-        const section = $("#gallery");
+      const rituals = read(CONFIG, "ritualGallery", []) || [];
+      if (!rituals.length) {
+        const section = $("#ritualGallery");
         if (section) section.hidden = true;
         return;
       }
 
+      this.items = rituals.map(function (r) {
+        const name = r.name || "Ritual";
+        return {
+          name: name,
+          nameTa: r.nameTa || "",
+          src: r.image || "assets/images/hero-wedding.jpg",
+          alt: r.alt || name,
+          description: r.description || "",
+          caption: r.nameTa ? name + " · " + r.nameTa : name
+        };
+      });
+
       grid.innerHTML = this.items
-        .map(function (g, i) {
+        .map(function (r, i) {
           return (
-            '<button type="button" class="gallery__item" data-index="' + i + '" aria-label="View photo: ' +
-            esc(g.caption || g.alt || "Wedding photo") + '">' +
-            '<img src="' + esc(g.src) + '" alt="' + esc(g.alt || "Wedding photograph") +
-            '" loading="lazy" decoding="async" width="1200" height="1500">' +
-            '<span class="gallery__overlay"><span class="gallery__caption">' + esc(g.caption || "") + "</span></span>" +
-            "</button>"
+            '<li class="ritual-card reveal reveal--delay-' + (i % 4) + '">' +
+            '<button type="button" class="ritual-card__btn" data-index="' + i + '" aria-haspopup="dialog">' +
+            '<span class="ritual-card__media">' +
+            '<img class="ritual-card__image" src="' + esc(r.src) + '" alt="' + esc(r.alt) +
+            '" width="1400" height="1050" loading="lazy" decoding="async">' +
+            '<span class="ritual-card__zoom" aria-hidden="true">' +
+            '<svg focusable="false"><use href="#i-expand" width="16" height="16"></use></svg>' +
+            '</span></span>' +
+            '<span class="ritual-card__body">' +
+            '<span class="ritual-card__step" aria-hidden="true">' + pad(i + 1) + '</span>' +
+            '<span class="ritual-card__name">' + esc(r.name) + '</span>' +
+            (r.nameTa ? '<span class="ritual-card__name-ta" lang="ta">' + esc(r.nameTa) + '</span>' : "") +
+            '<span class="ritual-card__desc">' + esc(r.description) + '</span>' +
+            '</span></button></li>'
           );
         })
         .join("");
 
       on(grid, "click", function (e) {
-        const btn = e.target.closest(".gallery__item");
+        const btn = e.target.closest(".ritual-card__btn");
         if (!btn) return;
-        gallery.open(Number(btn.getAttribute("data-index")));
+        ritualGallery.open(Number(btn.getAttribute("data-index")));
       });
 
       this.bindLightbox();
@@ -1163,27 +1172,27 @@
       if (!box) return;
 
       on($("#lightboxClose"), "click", function () {
-        gallery.close();
+        ritualGallery.close();
       });
       on($("#lightboxPrev"), "click", function () {
-        gallery.step(-1);
+        ritualGallery.step(-1);
       });
       on($("#lightboxNext"), "click", function () {
-        gallery.step(1);
+        ritualGallery.step(1);
       });
 
       on(box, "click", function (e) {
         if (e.target === box || e.target.classList.contains("lightbox__figure")) {
-          gallery.close();
+          ritualGallery.close();
         }
       });
 
       on(document, "keydown", function (e) {
         if (!box.classList.contains("is-open")) return;
-        if (e.key === "Escape") gallery.close();
-        else if (e.key === "ArrowLeft") gallery.step(-1);
-        else if (e.key === "ArrowRight") gallery.step(1);
-        else if (e.key === "Tab") gallery.trapFocus(e);
+        if (e.key === "Escape") ritualGallery.close();
+        else if (e.key === "ArrowLeft") ritualGallery.step(-1);
+        else if (e.key === "ArrowRight") ritualGallery.step(1);
+        else if (e.key === "Tab") ritualGallery.trapFocus(e);
       });
     },
 
@@ -1861,7 +1870,7 @@
     initTravel();
     initGifts();
     renderTimeline();
-    gallery.init();
+    ritualGallery.init();
     countdown.init();
     initCalendar();
     rsvp.init();
