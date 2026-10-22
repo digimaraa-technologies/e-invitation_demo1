@@ -1,0 +1,19 @@
+{
+  "name": "Raju & Aishu — South Indian Hindu Wedding Invitation",
+  "short_name": "Raju & Aishu",
+  "description": "Digital wedding invitation for the traditional South Indian Hindu marriage of Raju and Aishu.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#2E2124",
+  "theme_color": "#2E2124",
+  "icons": [
+    {
+      "src": "assets/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
