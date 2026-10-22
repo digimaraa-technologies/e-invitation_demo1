@@ -165,7 +165,8 @@ This is the single source of truth. The script **never writes to it**.
 | Key | Type | Purpose |
 |---|---|---|
 | `date` | `"YYYY-MM-DD"` or `""` | Wedding date. **Empty → the countdown hides itself** and "To be announced" is shown. |
-| `time` | `"HH:MM"` (24 h) or `""` | Muhurtham time, local to `timezone` |
+| `time` | `"HH:MM"` (24 h) or `""` | Muhurtham start time, local to `timezone`. Also the start of the `.ics` / Google Calendar entry. |
+| `timeLabel` | string or `""` | Optional text for the muhurtham card, e.g. `"8:00 – 8:30 am"`. Empty → the formatted `time` is shown. |
 | `timezone` | IANA id | e.g. `"Asia/Kolkata"`. Used for DST-safe date maths. |
 | `venueName` | string or `""` | Venue name. Empty → map/directions buttons stay hidden. |
 | `venueAddress` | string or `""` | Street address, used to build the Maps links |
@@ -304,9 +305,9 @@ marked as placeholders and **must** be filled in before the invitation is shared
 
 | # | Placeholder | Where | How to fix |
 |---|---|---|---|
-| 1 | `event.date` = `""` | §4, §5, hero chip, JSON-LD | `event.date: "2027-02-14"` — the countdown, `.ics` file and Google Calendar link all switch on automatically |
-| 2 | `event.time` = `""` | §4, §5 | `event.time: "09:30"` (24-hour, local to `timezone`) |
-| 3 | `event.venueName` = `""` | §4, §8 | `event.venueName: "…"` |
+| 1 | `event.date` = `"2024-09-16"` | §4, §5, hero chip, JSON-LD | **Demo date — it is in the past.** Replace with the real `"YYYY-MM-DD"`; the countdown, `.ics` file and Google Calendar link all switch on automatically |
+| 2 | `event.time` = `"08:00"`, `event.timeLabel` = `"8:00 – 8:30 am"` | §4, §5 | Replace with the real muhurtham start and the range shown on the card |
+| 3 | `event.venueName` = `"RKV Mahal"` | §4, §8 | Replace with the confirmed venue name |
 | 4 | `event.venueAddress` = `""` | §8 | `event.venueAddress: "…"` — also builds the Maps links |
 | 5 | `invitation.groomFamily` / `brideFamily` = `""` | §4 | Fill in, or leave blank |
 | 6 | Canonical + OG URL | `index.html` `<head>` | `https://example.com/raju-aishu-wedding` → your real URL (the JSON-LD `url` must match) |

@@ -1823,7 +1823,7 @@
     if (EVENT.known) {
       if (infoDate) infoDate.textContent = formatDate(EVENT.ts, EVENT.tz);
       if (infoDay) infoDay.textContent = formatDay(EVENT.ts, EVENT.tz);
-      if (infoTime) infoTime.textContent = formatTime(EVENT.ts, EVENT.tz);
+      if (infoTime) infoTime.textContent = read(CONFIG, "event.timeLabel", "") || formatTime(EVENT.ts, EVENT.tz);
       if (infoTz) infoTz.textContent = formatTimezone(EVENT.tz);
     } else {
       [infoDate, infoTime, infoVenue].forEach(function (el) {

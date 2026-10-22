@@ -59,13 +59,15 @@ const weddingConfig = {
    *              generated from `venueAddress` + `venueName`.
    * ------------------------------------------------------------------------ */
   event: {
-    date: "",              // e.g. "2027-02-14"
-    time: "",              // e.g. "09:30"
+    date: "2024-09-16",    // e.g. "2027-02-14"
+    time: "08:00",         // e.g. "09:30"
     timezone: "Asia/Kolkata",
-    venueName: "",         // e.g. "Sri Kothandaramar Kalyana Mandapam"
+    venueName: "RKV Mahal", // e.g. "Sri Kothandaramar Kalyana Mandapam"
     venueAddress: "",      // e.g. "12 Gandhi Road, Mylapore, Chennai 600004"
     mapUrl: "",            // optional; generated automatically when empty
     muhurthamNote: "Muhurtham",
+    /** Optional display text for the muhurtham card; overrides the time above. */
+    timeLabel: "8:00 – 8:30 am",
     dayLabel: ""
   },
 
@@ -236,10 +238,10 @@ const weddingConfig = {
   dressCode: {
     women: "Traditional silk sarees — Kanchipuram, Banarasi or Mysore — with elegant temple jewellery.",
     men: "Traditional veshti and shirt, or a silk veshti with kurta.",
-    womenImage: "assets/images/dresscode-women.jpg",
-    womenImageAlt: "Kanchipuram silk saree in traditional South Indian style",
-    menImage: "assets/images/dresscode-men.jpg",
-    menImageAlt: "Traditional South Indian veshti worn with a shirt",
+    womenImage: "assets/images/saree.jpg",
+    womenImageAlt: "Traditional silk saree in South Indian style",
+    menImage: "assets/images/Dhoti.jpg",
+    menImageAlt: "Traditional South Indian veshti/dhoti",
     note: ""
   },
 
