@@ -515,13 +515,6 @@ p:last-child {
   color: var(--text-on-dark);
 }
 
-.section--walnut {
-  background:
-    radial-gradient(80% 70% at 15% 0%, rgba(197, 160, 89, 0.16) 0%, rgba(197, 160, 89, 0) 60%),
-    linear-gradient(160deg, var(--color-dark-walnut) 0%, #2b1607 100%);
-  color: var(--text-on-dark);
-}
-
 .section__head {
   text-align: center;
   margin-bottom: var(--sp-7);
@@ -532,8 +525,7 @@ p:last-child {
   margin-inline: auto;
 }
 
-.section--deep .section__head .lede,
-.section--walnut .section__head .lede {
+.section--deep .section__head .lede {
   color: var(--text-muted-dark);
 }
 
@@ -2212,12 +2204,51 @@ body.is-open .hero__reveal:nth-child(7) {
 /* ==========================================================================
    14b. RITUAL GALLERY
    ========================================================================== */
+.section--rituals {
+  background: radial-gradient(120% 80% at 50% 0%, rgba(197, 160, 89, 0.12) 0%, transparent 70%),
+    linear-gradient(180deg, var(--color-plum-deep) 0%, var(--color-plum-dark) 100%);
+  color: var(--color-cream);
+}
+
+.section--rituals .section__kicker {
+  font-family: var(--font-accent);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--color-gold-soft);
+  margin-bottom: 0.8rem;
+}
+
+.section--rituals .section__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin: 0 0 0.8rem;
+}
+
+.section--rituals .section__lead {
+  color: var(--text-muted-dark);
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.section--rituals .ornament {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+  color: var(--color-gold-soft);
+}
+
+.section--rituals .ornament svg {
+  width: 10rem;
+  height: 1.5rem;
+}
+
 .ritual-gallery {
   list-style: none;
-  margin: 0;
+  margin: clamp(2rem, 6vw, 3.4rem) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: 1fr;
   gap: clamp(1rem, 3vw, 1.6rem);
 }
 
@@ -2708,9 +2739,17 @@ body.is-open .hero__reveal:nth-child(7) {
   .details__families {
     grid-template-columns: 1fr 1fr;
   }
+
+  .ritual-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 960px) {
+  .ritual-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .topbar__brand {
     font-size: 1.2rem;
   }

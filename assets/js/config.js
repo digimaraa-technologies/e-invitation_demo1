@@ -210,17 +210,11 @@ const weddingConfig = {
    * ------------------------------------------------------------------------ */
   ritualGallery: [
     { name: "Kalash Puja", nameTa: "கலச பூஜை", image: "assets/images/kuthu-vilakku.jpg", alt: "Brass oil lamp lit for the kalash puja", description: "The ceremony opens with the kalash — a sacred pot of water, mango leaves and coconut — invoked to bless the couple and the day ahead." },
-    { name: "Nichayathartham", nameTa: "நிச்சயதார்த்தம்", image: "assets/images/wedding-stage.jpg", alt: "Decorated wedding stage prepared for the betrothal", description: "The formal betrothal that begins our journey, sealed with the exchange of rings before the families." },
-    { name: "Mehendi", nameTa: "மேஹந்தி", image: "assets/images/wedding-gallery/gallery-12.jpg", alt: "Indian Tamil wedding ceremony", description: "An evening of henna, painted with blessings for love, prosperity and good luck." },
-    { name: "Haldi", nameTa: "ஹல்தி", image: "assets/images/wedding-gallery/gallery-02.jpg", alt: "South Indian wedding celebration", description: "Turmeric is applied to the bride and groom, blessing them with warmth, glow and a long life together." },
-    { name: "Sangeet", nameTa: "சங்கீதம்", image: "assets/images/nadaswaram.jpg", alt: "Nadaswaram artist performing for the sangeet", description: "An evening of family music and dance to celebrate the couple before the main day arrives." },
     { name: "Jaimala", nameTa: "தாலி பரிமாற்றம்", image: "assets/images/maalai-maatral.jpg", alt: "Bride and groom exchanging flower garlands", description: "The exchange of garlands — the first time the bride and groom meet face to face, and the beginning of the ceremony." },
     { name: "Kanyadaan & Thaali", nameTa: "கன்னதான் & தாலி", image: "assets/images/thaali-kattudhal.jpg", alt: "Groom tying the thaali around the bride's neck", description: "The bride is given away by her family, and the groom ties the thaali around her neck as a promise of lifelong bond." },
     { name: "Homam & Pooja", nameTa: "ஹோமம் & பூஜை", image: "assets/images/homam.jpg", alt: "Sacred fire lit for the homam", description: "Offerings are made into the sacred fire while the priests chant for the couple's wellbeing." },
     { name: "Saptapadi", nameTa: "சப்தபதி", image: "assets/images/wedding-gallery/gallery-13.jpg", alt: "Couple taking the saptapadi steps around the sacred fire", description: "Seven rounds around the sacred fire, each one a promise — of food, strength, wealth, love, health, progeny and friendship." },
-    { name: "Muhurtham", nameTa: "முகூர்த்தம்", image: "assets/images/mandapam.jpg", alt: "Flower-decorated mandapam at the time of the muhurtham", description: "The most auspicious moment of the day, held at the muhurtham chosen for us by the priests." },
-    { name: "Vidaai", nameTa: "விடை", image: "assets/images/wedding-gallery/gallery-16.jpg", alt: "Decorated entrance to the wedding pandal", description: "The farewell that closes the day, as the newlyweds leave the family home for their new life together." },
-    { name: "Wedding Feast", nameTa: "விருந்து", image: "assets/images/wedding-feast.jpg", alt: "Traditional South Indian wedding feast served on a banana leaf", description: "A traditional South Indian meal served on a banana leaf, with plenty for everyone." }
+    { name: "Muhurtham", nameTa: "முகூர்த்தம்", image: "assets/images/mandapam.jpg", alt: "Flower-decorated mandapam at the time of the muhurtham", description: "The most auspicious moment of the day, held at the muhurtham chosen for us by the priests." }
   ],
 
   /* --------------------------------------------------------------------------

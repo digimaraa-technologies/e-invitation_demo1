@@ -1140,7 +1140,7 @@
       grid.innerHTML = this.items
         .map(function (r, i) {
           return (
-            '<li class="ritual-card reveal reveal--delay-' + (i % 4) + '">' +
+            '<li class="ritual-card reveal reveal--delay-' + (i % 3) + '">' +
             '<button type="button" class="ritual-card__btn" data-index="' + i + '" aria-haspopup="dialog">' +
             '<span class="ritual-card__media">' +
             '<img class="ritual-card__image" src="' + esc(r.src) + '" alt="' + esc(r.alt) +

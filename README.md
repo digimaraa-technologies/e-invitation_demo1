@@ -109,7 +109,7 @@ Anything with a `data-bind="a.b.c"` attribute in `index.html` is filled from
 | 4 | Invitation details | `#details` | Date / time / venue info cards. |
 | 5 | Countdown | `#countdown` | Live countdown + "Add to Calendar" (`.ics`) + Google Calendar link. |
 | 6 | Rituals timeline | `#rituals` | Ordered programme with times, icons and photos. |
-| 7 | Ritual gallery + lightbox | `#ritualGallery` | 12 ritual cards (Tamil name + description) rendered from `ritualGallery[]`; clicking a card opens the keyboard-navigable lightbox. |
+| 7 | Ritual gallery + lightbox | `#ritualGallery` | 6 ritual cards (Tamil name + description) rendered from `ritualGallery[]`; clicking a card opens the keyboard-navigable lightbox. |
 | 8 | Venue & directions | `#venue` | Photo, address, Google Maps + directions links. |
 | 9 | Dress code | `#dresscode` | Two cards (women / men) with photographs. |
 | 10 | Music | *(top bar)* | Visible toggle in the sticky header. |
@@ -484,8 +484,8 @@ same licence. Replacing the photographs with your own removes the requirement fo
 (but keep the credits if you keep any of them).
 
 The files in `assets/images/wedding-gallery/` are a **spare photo pool** — the ritual gallery in §7
-currently uses `gallery-02`, `gallery-12`, `gallery-13` and `gallery-16`; point the other entries
-at any of the remaining files, or replace them with your own.
+currently uses `gallery-13`; point the other entries at any of the remaining files, or replace them
+with your own.
 
 ### Photographs supplied with the project
 

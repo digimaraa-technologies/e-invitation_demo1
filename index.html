@@ -457,14 +457,24 @@
   </section>
 
   <!-- ======================= SECTION 7 — RITUAL GALLERY ======================= -->
-  <section class="section section--walnut" id="ritualGallery">
+  <section class="section section--rituals" id="ritualGallery">
     <div class="shell">
-      <div class="section__head reveal">
-        <p class="eyebrow eyebrow--center eyebrow--light">Sacred steps</p>
-        <h2 class="section-title">Rituals of the Wedding</h2>
-        <p class="lede">Every step of our ceremony carries its own meaning, blessing and promise. These are the rituals we will follow together.</p>
-        <div class="divider"><span class="divider__mark"></span></div>
-      </div>
+      <header class="section__head reveal">
+        <p class="section__kicker">Sacred steps</p>
+        <h2 class="section__title">Rituals of the Wedding</h2>
+        <p class="section__lead">Every step of our ceremony carries its own meaning, blessing and promise. These are the rituals we will follow together.</p>
+        <span class="ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" role="presentation" focusable="false">
+            <path d="M2 12h50" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+            <path d="M108 12h50" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></path>
+            <path d="M80 2c5 5 5 15 0 20-5-5-5-15 0-20Z" fill="none" stroke="currentColor" stroke-width="1.4"></path>
+            <path d="M68 12c4-5 8-5 12 0-4 5-8 5-12 0Z" fill="none" stroke="currentColor" stroke-width="1.4"></path>
+            <path d="M92 12c-4-5-8-5-12 0 4 5 8 5 12 0Z" fill="none" stroke="currentColor" stroke-width="1.4"></path>
+            <circle cx="58" cy="12" r="2.4" fill="currentColor"></circle>
+            <circle cx="102" cy="12" r="2.4" fill="currentColor"></circle>
+          </svg>
+        </span>
+      </header>
 
       <!-- Cards are rendered from CONFIG.ritualGallery (assets/js/config.js). -->
       <ul class="ritual-gallery" id="ritualGrid"></ul>
